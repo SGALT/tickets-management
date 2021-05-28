@@ -1,0 +1,9 @@
+<h1>Créer un ticket</h1>
+<p>Expliquez le contexte du ticket, le nom du professeur et votre ticket s'affichera dans la file d'attente</p>
+
+<%= simple_form_for @ticket do |f| %>
+  <%= f.input :message %>
+  <%= f.input :student_id, as: :hidden, input_html: { value: current_student.id } %>
+  <%= f.input :user_id, as: :hidden, input_html: { value: current_student.user.id } %>
+  <%= f.button :submit %>
+<% end %>

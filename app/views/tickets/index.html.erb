@@ -1,0 +1,28 @@
+<div class="container">
+  <h1 class="text-center mt-3">Liste des tickets actifs</h1>
+  <p class="text-center">Plus votre ticket est haut plus tôt ça sera votre tour !</p>
+  <% if current_student %>
+    <div id="student-refresh"></div>
+  <% end %>
+  <div class="d-flex flex-column">
+    <% if @tickets.empty? %>
+      <h3>Aucun ticket pour le moment, le prof peut se reposer 😜</h3>
+    <% end %>
+    <% @tickets.each do |ticket| %>
+      <div class="d-flex justify-content-around align-items-center border rounded border-dark p-3 mb-3">
+        <p>
+          Message : <%= ticket.message %>
+        </p>
+        <p>
+          De : <%= ticket.student.name%>
+        </p>
+        <p>
+          Groupe : <%= ticket.student.group_name %>
+        </p>
+        <% if current_user %>
+          <%= link_to "Ticket terminé", ticket_path(ticket), method: :put, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
