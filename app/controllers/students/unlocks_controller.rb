@@ -1,4 +1,4 @@
-frozen_string_literal: true
+# frozen_string_literal: true
 
 class Students::UnlocksController < Devise::UnlocksController
   # GET /resource/unlock/new
